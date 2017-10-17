@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module divdiv ( dividend, divisor, clk, rstn, enable, result);
 
 input	[31:0] dividend;
