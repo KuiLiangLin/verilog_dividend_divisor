@@ -1,12 +1,11 @@
-`timescale 1ns/1ns
-module divdiv (
-	 input  wire [31:0] dividend
-	,input  wire [31:0] divisor
-	,input  wire clk
-	,input  wire rstn
-	,input  wire enable
-	,output wire [31:0]result
-);
+module divdiv ( dividend, divisor, clk, rstn, enable, result);
+
+input	[31:0] dividend;
+input	[31:0] divisor;
+input	clk;
+input	rstn;
+input	enable;
+output	[31:0]result;
 
 /////////////////////////////////////////////////////////
 // result = dividend / divisor
