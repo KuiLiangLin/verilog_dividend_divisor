@@ -1,3 +1,13 @@
+/////////////////////////////////////////////////////////
+// result = dividend / divisor
+//
+// If input bus width is 32 bits, clk needs 2^32 cycles
+// inputing data while enable = 0
+// Calculating while enable = 1
+// Keeping result while enable = 0 
+// This source code is proveded by kuiliang 2017/10/17
+///////////////////////////////////////////////////////
+
 `timescale 1ns/1ps
 module divdiv ( dividend, divisor, clk, rstn, enable, result);
 
@@ -8,15 +18,7 @@ input	rstn;
 input	enable;
 output	[31:0]result;
 
-/////////////////////////////////////////////////////////
-// result = dividend / divisor
-//
-// If input bus width is 32 bits, clk needs 32 cycles
-// inputing data while enable = 0
-// Calculating while enable = 1
-// Keeping result while enable = 0 
-// This source code is proveded by kuiliang 2017/10/17
-///////////////////////////////////////////////////////
+
 
 reg [31:0]temp, counter, result_pre;
 
