@@ -25,35 +25,35 @@ reg [31:0]temp, counter, result_pre;
 always@(posedge clk or negedge rstn)
 begin
 	if (!rstn) 
-		temp <= #2 32'd0;
-	else if (enable && (temp => divisor) )
-		temp <= #2 temp - divisor;
+		temp <=  32'd0;
+	else if (enable && ((temp == divisor) | (temp > divisor)) )
+		temp <=  temp - divisor;
 	else if (enable)
-		temp <= #2 temp;
+		temp <=  temp;
 	else
-		temp <= #2 dividend;
+		temp <=  dividend;
 end
 
 always@(posedge clk or negedge rstn)
 begin
 	if (!rstn) 
-		counter <= #2 32'd0;
-	else if (enable && (temp => divisor) )
-		counter <= #2 counter + 32'd1;
+		counter <=  32'd0;
+	else if (enable && ((temp == divisor) | (temp > divisor)) )
+		counter <=  counter + 32'd1;
 	else if (enable)
-		counter <= #2 counter;
+		counter <=  counter;
 	else
-		counter <= #2 32'd0;
+		counter <=  32'd0;
 end
 
 always@(posedge clk or negedge rstn)
 begin
 	if (!rstn) 
-		result_pre <= #2 32'd0;
+		result_pre <=  32'd0;
 	else if ( enable )
-		result_pre <= #2 counter;
+		result_pre <=  counter;
 	else 
-		result_pre <= #2 result_pre;
+		result_pre <=  result_pre;
 end
 
 assign result = result_pre;
